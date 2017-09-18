@@ -27,10 +27,8 @@ void nrf_bno055_init(void)
 		
 		/* set the power mode as NORMAL*/
 		bno055_set_power_mode(BNO055_POWER_MODE_NORMAL);
-	
 		bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG);
-		bno055_set_operation_mode(BNO055_OPERATION_MODE_COMPASS);
-		
+		bno055_set_accel_range(BNO055_ACCEL_RANGE_16G);
 }
 
 

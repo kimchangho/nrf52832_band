@@ -3,12 +3,10 @@
 uint8_t device_state;
 
 static int turn_on_time;
-APP_TIMER_DEF(long_button);
 bool first_button_release = false;
 static void timer_long_button_handler(void * p_context)
 {
-	
-	if(turn_on_time++ > 19) // 3-Second
+	if(turn_on_time++ > 14) // -Second
 	{
 		if(device_state == DEVICE_OFF)
 		{
@@ -52,7 +50,7 @@ void button_init()
 	
 	app_button_config.pin_no = 4;
 	app_button_config.active_state = APP_BUTTON_ACTIVE_HIGH;
-	app_button_config.pull_cfg = NRF_GPIO_PIN_NOPULL;
+	app_button_config.pull_cfg = NRF_GPIO_PIN_PULLDOWN;
 	app_button_config.button_handler = button_handler;
 	app_button_init(&app_button_config, 1, BUTTON_DETECTION_DELAY);
 	
@@ -62,6 +60,11 @@ void button_init()
 	
 	if(nrf_gpio_pin_read(4) == 1)
 	{
+		nrf_gpio_pin_set(15);
 		app_timer_start(long_button,  APP_TIMER_TICKS(100, APP_TIMER_PRESCALER), NULL);
+	}
+	else
+	{
+		nrf_gpio_pin_clear(15);
 	}
 }

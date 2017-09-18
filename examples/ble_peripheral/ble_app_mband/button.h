@@ -12,5 +12,5 @@ enum
 };
 
 void button_init(void);
-
+APP_TIMER_DEF(long_button);
 #endif

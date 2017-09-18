@@ -12,6 +12,7 @@
  */
 
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 #include "nordic_common.h"
 #include "nrf.h"
@@ -24,6 +25,7 @@
 #include "app_button.h"
 #include "ble_nus.h"
 #include "app_uart.h"
+
 #include "app_util_platform.h"
 #include "bsp.h"
 #include "bsp_btn_ble.h"
@@ -32,6 +34,7 @@
 #include "nrf_nvic.h"
 #include "nrf_drv_twi.h"
 #include "nrf_delay.h"
+#include "protocol.h"
 
 #define IS_SRVC_CHANGED_CHARACT_PRESENT 0                                           /**< Include the service_changed characteristic. If not enabled, the server's database cannot be changed for the lifetime of the device. */
 
